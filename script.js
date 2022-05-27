@@ -1,45 +1,52 @@
+const addForm = document.querySelector('.addForm');
+const list = document.querySelector('.list');
+const searchForm = document.querySelector('.search');
 
-// const add = document.querySelector('.add');
-// const resetCount = document.querySelector('.reset');
-// const sub = document.querySelector('.subtract');
-const count = document.querySelector('.counter');
-const buttons = document.querySelector('.buttons');
 
-buttons.addEventListener('click', (e) => {
-    if(e.target.classList.contains('add')) {
-        count.innerHTML++;
-        setColors();
-    } 
-    
-    if(e.target.classList.contains('subtract')){
-        count.innerHTML--;
-        setColors();
-    }
-    
-    if(e.target.classList.contains('reset')) {
-        count.innerHTML = 0;
-        setColors();
+// adding new todo 
+function addTodo(term) {
+    const html = `
+            <li>
+                <span>${term}</span>
+                <i class="fa-solid fa-trash-can delete"></i>
+            </li>
+            `
+        list.innerHTML += html; 
+}
+
+addForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const term = document.querySelector('.add').value.trim();
+
+    if(term.length) {
+        addTodo(term);
+        addForm.reset();
     }
 });
 
-function setColors() {
-    if(count.innerHTML > 0 ) {
-        count.style.color = 'yellow';
-    } else if (count.innerHTML < 0) {
-        count.style.color = 'orangered';
-    } else {
-        count.style.color = '#fff';
+// deleting item 
+list.addEventListener('click', (e) => {
+    if(e.target.classList.contains('delete')) {
+        e.target.parentElement.remove();
     }
+});
+
+// search function 
+const filterTodos = (result) => {
+   Array.from(list.children)
+   .filter((todo) => !todo.textContent.toLowerCase().includes(result))
+   .forEach((todo) => todo.classList.add('filtered'));
+
+   Array.from(list.children)
+   .filter((todo) => todo.textContent.toLowerCase().includes(result))
+   .forEach((todo) => todo.classList.remove('filtered'));
 }
 
-// add.addEventListener('click', () => {
-//   count.innerHTML++;
-// });
+// search todo 
+searchForm.addEventListener('keyup', () => {
+    let result = searchForm.value.trim().toLowerCase();
+    filterTodos(result);
+});
 
-// sub.addEventListener('click', () => {
-//     count.innerHTML--;
-// });
 
-// resetCount.addEventListener('click', () => {
-//     count.innerHTML = 0;
-// });
+

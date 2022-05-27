@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
 
+
 :root {
   --white: #fff;
   --black: #1c2b2d;
@@ -23,6 +24,8 @@ html {
 
 body {
   font-family: "Open Sans", sans-serif;
+  background-color: #20113e;
+  color: #f1f1f1;
 }
 
 p {
@@ -35,54 +38,66 @@ img {
 }
 
 .container {
-  max-width: 900px;
+  max-width: 450px;
   height: 100vh;
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
   justify-content: center;
   align-items: center;
- 
+
+  
 }
 
-.counter-div {
-  width: 40rem;
-  border: 1px solid var(--grey);
-  padding: 1rem;
-  background-color: var(--light-blue);
-  color: var(--white);
-  text-align: center;
+.wrapper {
+  width: 100%;
   border-radius: 5px;
 }
 
-.counter-div > * {
-  margin-bottom: 2rem;
-}
-
-.counter {
-  font-size: 4rem;
-}
-.buttons button {
-  padding: 1rem;
-  margin: 0 1rem;
-  font-size: 1.5rem;
-  color: var(--white);
-  font-weight: 700;
+form input {
+  width: 100%;
+  padding: 15px 10px;
+  border-radius: 5px;
   border: none;
   outline: none;
-  border-radius: 3px;
+  font-size: 1.6rem;
+  background-color: #170e2b;
+  color: #fff;
+}
+
+.todo {
+  background-color: #2a1652; 
+  margin: 40px 0;
+  border-radius: 5px;
+  border: 2px solid #2a1652;
+}
+
+
+ul li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #20113e;
+  margin: 1px 0;
+  padding: 15px 20px;
+  font-size: 1.6rem;
+  list-style: none;
+}
+
+ul li:last-child{
+  border-bottom: none;
+}
+
+.fa-solid  {
+  font-size: 1.6rem;
+  color: #f1f1f1;
   cursor: pointer;
 }
 
-button.subtract {
-  background-color: orangered;
+.filtered {
+  display: none;
 }
 
-button.reset {
-  background-color: var(--white);
-  color: var(--black);
-}
-
-button.add {
-  background-color: green;
+.search::placeholder {
+  font-size: 1.6rem;
 }
